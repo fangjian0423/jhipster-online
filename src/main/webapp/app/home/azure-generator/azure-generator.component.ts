@@ -34,6 +34,7 @@ export class AzureGeneratorComponent implements OnInit {
     hideHibernateCache: true,
     hideDevDatabaseType: true,
     hideIaCTool: true,
+    hideAzureApplicationType: true,
     hideDatabaseTypeOptions: ['cassandra', 'couchbase', 'neo4j', 'no'],
     hideProdDatabaseTypeOptions: ['mysql', 'mariadb', 'oracle', 'mssql', 'cassandra', 'couchbase', 'neo4j', 'no'],
     hideDevDatabaseTypeOptions: ['h2Disk', 'h2Memory', 'mysql', 'mariadb', 'oracle', 'mssql', 'cassandra', 'couchbase', 'neo4j', 'no'],
@@ -52,6 +53,7 @@ export class AzureGeneratorComponent implements OnInit {
     this.azureJHipsterModel.prodDatabaseType = 'postgresql';
     this.azureJHipsterModel.cacheProvider = 'no';
     this.azureJHipsterModel.clientFramework = 'react';
+    this.azureJHipsterModel.azureApplicationType = 'AI';
     // Repository for this blueprint is
     // https://github.com/Azure/generator-jhipster-azure-container-apps
     this.azureJHipsterModel.blueprints.push({ name: 'generator-jhipster-azure-container-apps' });

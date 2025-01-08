@@ -8,6 +8,18 @@
         <jhi-git-provider-alert *ngIf="isAuthenticated()" [tab]="'generate-application'"></jhi-git-provider-alert>
         <jhi-git-provider *ngIf="isAuthenticated()" (sharedData)="updateSharedData($event)" [simpleMode]="true"></jhi-git-provider>
         <ng-content select="[generator-header]"></ng-content>
+        <div class="row" *ngIf="config.hideAzureApplicationType">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label for="azureApplicationType">Which application type do you want to create?</label>
+                    <select id="azureApplicationType" [(ngModel)]="model.azureApplicationType" name="azureApplicationType"
+                            class="form-control" #azureApplicationType="ngModel">
+                        <option value="AI">AI</option>
+                        <option value="WEB">WEB</option>
+                    </select>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-8">
                 <div class="form-group">
@@ -87,7 +99,7 @@
                         </option>
                     </select>
                 </div>
-                <div class="form-group" *ngIf="!config.hideDatabaseType">
+                <div class="form-group" *ngIf="!config.hideDatabaseType" [hidden]="model.azureApplicationType === 'AI'">
                     <label for="databaseType">Which <i>type</i> of database would you like to use?</label>
                     <select id="databaseType" [(ngModel)]="model.databaseType" name="databaseType" class="form-control"
                             #databaseType="ngModel" (change)="changeDatabaseType()">
@@ -99,7 +111,7 @@
                         <option value="no" *ngIf="!isDatabaseTypeOptionHidden('no')">No database</option>
                     </select>
                 </div>
-                <div class="form-group" *ngIf="!config.hideProdDatabaseType">
+                <div class="form-group" *ngIf="!config.hideProdDatabaseType" [hidden]="model.azureApplicationType === 'AI'">
                     <label for="prodDatabaseType">Which <i>production</i> database would you like to use?</label>
                     <select id="prodDatabaseType" [(ngModel)]="model.prodDatabaseType" name="prodDatabaseType"
                             class="form-control" #prodDatabaseType="ngModel" (change)="changeProdDatabaseType()">
@@ -117,7 +129,7 @@
                         <option value="no" [hidden]="config.disableNoDatabaseOptions == true" *ngIf="!isProdDatabaseOptionHidden('no', 'no') || !config.hideDatabaseType">No database</option>
                     </select>
                 </div>
-              <div class="form-group" *ngIf="config.hideIaCTool">
+                <div class="form-group" *ngIf="config.hideIaCTool" [hidden]="model.azureApplicationType == 'AI'">
                 <label for="iaCTools">Do you want to use Infrastructure as Code tool(multiple choice)?</label>
                 <select id="iaCTools" [(ngModel)]="model.iaCTools" name="iaCTools" class="form-control"
                         #iaCTools="ngModel" multiple>

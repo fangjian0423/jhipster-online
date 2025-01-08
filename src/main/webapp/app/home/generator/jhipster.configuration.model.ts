@@ -23,6 +23,7 @@ export interface BlueprintModel {
 
 export class JHipsterConfigurationModel {
   public applicationType = 'monolith';
+  public azureApplicationType = '';
   public gitCompany = '';
   public baseName = 'jhipsterSampleApplication';
   public packageName = 'com.mycompany.myapp';

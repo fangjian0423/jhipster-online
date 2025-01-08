@@ -66,4 +66,5 @@ export interface GeneratorConfigurationModel {
   hideHibernateCache?: boolean;
   disableNoDatabaseOptions?: boolean;
   hideIaCTool?: boolean;
+  hideAzureApplicationType?: boolean;
 }
